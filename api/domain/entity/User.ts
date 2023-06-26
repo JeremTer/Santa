@@ -4,6 +4,14 @@ export class User {
     private _address?: string;
     private _birthdate?: Date;
 
+
+    constructor(id: string, name?: string, address?: string, birthdate?: Date) {
+        this._id = id;
+        this._name = name;
+        this._address = address;
+        this._birthdate = birthdate;
+    }
+
     get id(): string {
         return this._id;
     }

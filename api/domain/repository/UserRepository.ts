@@ -1,6 +1,7 @@
-import {User} from "../model/User";
+import {User} from "../entity/User";
 
 export interface UserRepository {
-    getUserByName(name: string): User;
-    getUserInformation(id: string): User;
+    getUserByName(name: string): User | undefined;
+
+    getUserInformation(id: string): User | undefined;
 }

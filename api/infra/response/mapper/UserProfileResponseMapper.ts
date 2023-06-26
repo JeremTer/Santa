@@ -1,5 +1,4 @@
-import {User} from "../../../domain/model/User";
-import {UserResponse} from "../UserResponse";
+import {User} from "../../../domain/entity/User";
 import {UserProfileResponse} from "../UserProfileResponse";
 
 export class UserProfileResponseMapper {

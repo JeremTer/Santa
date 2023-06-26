@@ -1,4 +1,4 @@
-import {User} from "../domain/model/User";
+import {User} from "../domain/entity/User";
 import {UserRepository} from "../domain/repository/UserRepository";
 
 export class FindUser {
@@ -9,7 +9,13 @@ export class FindUser {
     }
 
     execute(username: string): User {
-        return this.userRepository.getUserByName(username)
+        const userByName = this.userRepository.getUserByName(username);
+
+        if (userByName === undefined || userByName === null) {
+            throw new Error(`User with name ${username} not found`)
+        }
+
+        return userByName
     }
 
 }
