@@ -25,31 +25,36 @@ const userProfileResponseMapper = new UserProfileResponseMapper()
 
 export const getUserByName: RequestHandler = ((req, res) => {
     const username = req.params.username;
-    const user = findUser.execute(username);
+    try {
+        const user = findUser.execute(username);
+        if (!user) {
+            return res.status(404).send('User not found')
+        }
+        const userResponse: UserResponse = userResponseMapper.mapUserToResponse(user)
 
-    if (!user) { //todo exception handling
-        return res.status(404).send('User not found')
+        res.json(userResponse)
+    } catch (e: any) {
+        return res.status(404).send(e.message)
     }
-    const userResponse: UserResponse = userResponseMapper.mapUserToResponse(user)
 
-    res.json(userResponse)
 })
 
 export const getUserProfile: RequestHandler = ((req, res) => {
     const userId: string = req.params.userId
-    const user = getUserInformations.execute(userId);
 
-    if (!user) {//todo exception handling
-        return res.status(404).send('User not found')
+    try {
+        const user = getUserInformations.execute(userId);
+
+        if (!user) {
+            return res.status(404).send('User not found')
+        }
+
+        const userProfileResponse: UserProfileResponse = userProfileResponseMapper.mapUserToProfileResponse(user)
+
+        res.json(userProfileResponse)
+    } catch (e: any) {
+        return res.status(404).send(e.message)
     }
 
-    const userProfileResponse: UserProfileResponse = userProfileResponseMapper.mapUserToProfileResponse(user)
-
-    res.json(userProfileResponse)
 })
-
-// module.exports = {
-//     getUserProfile,
-//     getUserByName
-// }
 
