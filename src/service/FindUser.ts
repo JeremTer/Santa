@@ -6,6 +6,7 @@ export class FindUser {
     private userRepository: UserRepository;
 
     constructor(userRepository: UserRepository) {
+        this.userRepository = userRepository;
     }
 
     execute(username: string): User {

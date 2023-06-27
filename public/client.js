@@ -12,9 +12,11 @@ santaForm.onsubmit = function (event) {
     // TODO: check the text isn't more than 100chars before submitting
     event.preventDefault();
 
-    //todo "call api" with name catched in the event
     const username = santaForm["userid"].value
     const wishes = santaForm["wish"].value
+
+    //todo call api get user by name to check if user exists
+    //todo call user profile
 
 
 };

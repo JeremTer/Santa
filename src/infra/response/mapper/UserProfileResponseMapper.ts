@@ -4,7 +4,7 @@ import {UserProfileResponse} from "../UserProfileResponse";
 export class UserProfileResponseMapper {
 
     mapUserToProfileResponse(user: User): UserProfileResponse {
-        return new UserProfileResponse(user.id, user.address, user.birthdate.toDateString())
+        return new UserProfileResponse(user.id, user.address, user.birthdate.toLocaleString())
     }
 
 

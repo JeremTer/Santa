@@ -16,7 +16,7 @@ export class UserRepositoryImpl implements UserRepository {
     getUserByName(name: string): User | undefined {
         let userModels: UserModel[] = []
         //todo file reader here
-        const jsonUsers = fs.readFileSync('../../resources/users.json', 'utf-8');
+        const jsonUsers = fs.readFileSync('resources/users.json', 'utf-8');
         (<any>Object).assign(userModels, JSON.parse(jsonUsers))
 
         const userModel = userModels.filter(user => user.username === name).pop()
@@ -28,7 +28,7 @@ export class UserRepositoryImpl implements UserRepository {
     getUserInformation(id: string): User | undefined {
         let userProfileModels: UserProfileModel[] = []
         //todo file reader here
-        const jsonUsers = fs.readFileSync('../../resources/userProfiles.json', 'utf-8');
+        const jsonUsers = fs.readFileSync('resources/userProfiles.json', 'utf-8');
         (<any>Object).assign(userProfileModels, JSON.parse(jsonUsers))
 
         const userProfileModel = userProfileModels.filter(user => user.userUid === id).pop()

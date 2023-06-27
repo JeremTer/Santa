@@ -6,6 +6,7 @@ import {UserResponseMapper} from "../response/mapper/UserResponseMapper";
 import {UserProfileResponseMapper} from "../response/mapper/UserProfileResponseMapper";
 import {UserRepositoryImpl} from "../repository/UserRepositoryImpl";
 import {UserModelMapper} from "../repository/model/mapper/UserModelMapper";
+import {RequestHandler} from "express";
 
 //todo dependency injection
 const userModelMapper = new UserModelMapper()
@@ -22,7 +23,7 @@ const userProfileResponseMapper = new UserProfileResponseMapper()
 //     this.userProfileResponseMapper = userProfileResponseMapper;
 // }
 
-const getUserByName = ((req, res) => {
+export const getUserByName: RequestHandler = ((req, res) => {
     const username = req.params.username;
     const user = findUser.execute(username);
 
@@ -34,7 +35,7 @@ const getUserByName = ((req, res) => {
     res.json(userResponse)
 })
 
-const getUserProfile = ((req, res) => {
+export const getUserProfile: RequestHandler = ((req, res) => {
     const userId: string = req.params.userId
     const user = getUserInformations.execute(userId);
 
@@ -47,8 +48,8 @@ const getUserProfile = ((req, res) => {
     res.json(userProfileResponse)
 })
 
-module.exports = {
-    getUserProfile,
-    getUserByName
-}
+// module.exports = {
+//     getUserProfile,
+//     getUserByName
+// }
 
