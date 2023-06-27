@@ -1,15 +1,10 @@
 import {Router} from 'express';
-import {getUserByName, getUserProfile} from "../controller/UserController";
-
-// Old node way
-// const express = require('express');
-// const Router = express.Router;
+import {getUserByName, getUserProfile, sendReminder} from "../controller/UserController";
 
 const router = Router();
 
-
 router.get('/:username', getUserByName);
-
 router.get('/:userId/profile', getUserProfile);
+router.post('/reminder', sendReminder);
 
 export default router;
